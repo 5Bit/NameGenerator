@@ -20,7 +20,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		
 		boolean debugging = false;
-		
+		ArrayList<String> names = new ArrayList<String>(); // for holding the names
 		System.out.println("Starting Name Generator");
 		System.out.println(versionNumber);
 		
@@ -33,9 +33,22 @@ public class Main {
 		if((inLine.equalsIgnoreCase("y")))
 			debugging = true;
 		
+		if(inLine.equalsIgnoreCase("T"))
+		{
+			StringBuilder tempNameList = new StringBuilder();
+			ArrayList<String> boyNames = fileReader("C:\\Users\\K.Field\\Downloads\\namesBoys.txt");
+			names.addAll(boyNames); // gives all the boy names to names
+			ArrayList<String> girlNames = fileReader("C:\\Users\\K.Field\\Downloads\\namesGirls.txt");
+			names.addAll(girlNames);
+			Markov nameGenerator = new Markov(names, 10, 3, 10);
+			nameGenerator.runGenerator();
+			in.close();
+			System.exit(0);
+		}
+		
 		
 		// Menu for choosing the gender of name
-		ArrayList<String> names = new ArrayList<String>(); // for holding the names
+
 		System.out.println("Choose the gender of name you would like to generate.");
 		System.out.println("1. Male");
 		System.out.println("2. Female");
@@ -100,7 +113,8 @@ public class Main {
 		
 		
 		// start the markov model
-		
+		Markov nameGenerator = new Markov(names, numberOfNames, nameLength[0], nameLength[1]);
+		nameGenerator.runGenerator();
 		
 		
 		
@@ -127,7 +141,8 @@ public class Main {
 			String line;
 			while((line = br.readLine()) != null) // while it has a line...
 			{
-				temp.add(line);
+				String tempLine = "__" + line + "__";
+				temp.add(tempLine);
 			}
 		}
 		return temp;
