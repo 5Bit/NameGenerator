@@ -12,7 +12,7 @@ public class Main {
 	static String versionNumber = "V. 1.0";
 
 	/**
-	 * Main function - where all good things start
+	 * Main function
 	 * @param args
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
@@ -62,7 +62,7 @@ public class Main {
 		{
 			
 			StringBuilder tempNameList = new StringBuilder();
-			System.out.println("Type in the file directory for the male names .txt file:");
+			System.out.println("Type in the file directory, complete with file name, for the male names .txt file:");
 			String fileLocation = in.nextLine();
 			ArrayList<String> boyNames = fileReader(fileLocation);
 			
@@ -76,7 +76,7 @@ public class Main {
 		if((inLine.equalsIgnoreCase("2")) || (inLine.equalsIgnoreCase("3")))
 		{
 			StringBuilder tempNameList = new StringBuilder();
-			System.out.println("Type in the file directory for the female names .txt file:");
+			System.out.println("Type in the file directory, complete with file name, for the female names .txt file:");
 			String fileLocation = in.nextLine();
 			ArrayList<String> girlNames = fileReader(fileLocation);
 			
